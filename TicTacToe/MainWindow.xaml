@@ -35,9 +35,9 @@
             
 
         </Button>
-        <TextBox x:Name="oTurn" TextWrapping="Wrap" Text="O's Turn" Width="60" Height="30" Grid.Column="2" Margin="29,3,28,3" Grid.Row="3" Visibility="Hidden"/>
-        <TextBox x:Name="xTurn" TextWrapping="Wrap" Text="X's Turn" Width="60" Height="30" Margin="28,3,29,3" Grid.Row="3" Visibility="Hidden"/>
-        <TextBox x:Name="Player1Wins" TextWrapping="Wrap" Text="X Wins" Height="30" Grid.Column="1" Margin="19,5,19,74" Visibility="Hidden"/>
+        <TextBox x:Name="oTurn" TextWrapping="Wrap" Text="O's Turn" Grid.Column="2" Margin="29,3,28,3" Grid.Row="3" Visibility="Hidden"/>
+        <TextBox x:Name="xTurn" TextWrapping="Wrap" Text="X's Turn" Margin="28,3,29,3" Grid.Row="3" Visibility="Hidden"/>
+        <TextBox x:Name="Player1Wins" TextWrapping="Wrap" Text="X Wins" Grid.Column="1" Margin="19,5,19,74" Visibility="Hidden" Height="30"/>
         <TextBox x:Name="Player2Wins" TextWrapping="Wrap" Text="O Wins" Height="30" Grid.Column="1" Margin="19,5,19,74" Visibility="Hidden"/>
     </Grid>
 

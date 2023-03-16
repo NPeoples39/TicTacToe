@@ -30,6 +30,10 @@ namespace TicTacToe
         {
             InitializeComponent();
             NewGame();
+            Window1 w = new Window1(this);
+            //MainWindow w2 = new MainWindow();
+            w.Show();
+            this.Hide();
         }
 
         /// <summary>
@@ -42,9 +46,11 @@ namespace TicTacToe
                 if (Grid.GetRow(b) < 3)
                 {
                     b.Content = "";
+                    
                 }
-
+                
             }
+            gameOver = false;
             /// <summary>
             /// The player 1 wins/ player 2 wins buttons hide themselves
             /// The x turn is visible and the o turn is hidden
@@ -67,6 +73,8 @@ namespace TicTacToe
             int row = Grid.GetRow(button);
             int column = Grid.GetColumn(button);
 
+            Brush color1 = Brushes.Red;
+
             if (board[row, column] == 0)
             {
                 if (player1Turn)
@@ -80,6 +88,7 @@ namespace TicTacToe
                 else
                 {
                     button.Content = "O";
+                    button.Foreground = color1;
                     board[row, column] = 2;
                     oTurn.Visibility= Visibility.Hidden;
                     xTurn.Visibility = Visibility.Visible;
@@ -126,9 +135,9 @@ namespace TicTacToe
             // Check Columns
             for (int d = 0; d < 3; d++)
             {
-                if (board[d, 0] != 0 && board[d, 0] == board[d, 1] && board[d, 1] == board[d, 2])
+                if (board[0, d] != 0 && board[0, d] == board[1, d] && board[1, d] == board[2, d])
                 {
-                    return board[d, 0];
+                    return board[0, d];
                 }
             }
 
@@ -140,7 +149,7 @@ namespace TicTacToe
 
             if (board[0, 2] != 0 && board[0, 2] == board[1, 1] && board[1, 1] == board[2, 0])
             {
-                return board[0, 2];
+                return board[2, 0];
             }
             
             return 0;

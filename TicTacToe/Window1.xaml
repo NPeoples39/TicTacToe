@@ -1,0 +1,15 @@
+﻿<Window x:Class="TicTacToe.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TicTacToe"
+        mc:Ignorable="d"
+        Title="Window1" Height="450" Width="800">
+    <Grid x:Name="PlayerPicker" Visibility="Visible">
+        <TextBox Margin="160,114,160,245" TextWrapping="Wrap" Text="1 Player or 2 Player? With one player you can play against the computer." FontSize="18"/>
+        <Button x:Name="onePlayer" Content="1 Player" HorizontalAlignment="Left" Margin="160,189,0,0" VerticalAlignment="Top" Height="60" Width="225" Click="onePlayer_Click"/>
+        <Button x:Name="twoPlayer" Content="2 Player" HorizontalAlignment="Left" Margin="415,189,0,0" VerticalAlignment="Top" Height="60" Width="225" Click="twoPlayer_Click"/>
+
+    </Grid>
+</Window>
