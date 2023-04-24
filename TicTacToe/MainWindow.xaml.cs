@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,6 +27,10 @@ namespace TicTacToe
         private bool gameOver = false;
         
         private int[,] board = new int[3, 3];
+
+        public int PlayerNum { get; set; }
+
+        Random random = new Random();
         public MainWindow()
         {
             InitializeComponent();
@@ -39,7 +44,7 @@ namespace TicTacToe
         /// <summary>
         /// When you hit the "New Game" button
         /// </summary>
-        private void NewGame()
+        public void NewGame()
         {
             foreach (Button b in MainGrid.Children.OfType<Button>())
             {
@@ -74,12 +79,16 @@ namespace TicTacToe
             int column = Grid.GetColumn(button);
 
             Brush color1 = Brushes.Red;
+            Brush color2 = Brushes.Black;
 
+
+            //MessageBox.Show($"{row}{column}/n{board[row, column]}");
             if (board[row, column] == 0)
             {
                 if (player1Turn)
                 {
                     button.Content = "X";
+                    button.Foreground = color2;
                     board[row, column] = 1;
                     oTurn.Visibility = Visibility.Visible;
                     xTurn.Visibility = Visibility.Hidden;
@@ -115,12 +124,67 @@ namespace TicTacToe
                 }
 
 
+                
+                if (PlayerNum == 1 && player1Turn == true)
+                {
+                    
 
-                player1Turn = !player1Turn;
+                    int rx = random.Next(0, 3);
+                    int ry = random.Next(0, 3);
+
+                    while (board[rx, ry] != 0)
+                    {
+                        rx = random.Next(0, 3);
+                        ry = random.Next(0, 3);
+                    }
+                    //MessageBox.Show($"{rx}{ry}");
+                    Button b = GetButton(MainGrid, rx, ry);
+                    b.Content = "O";
+                    board[rx, ry] = 2;
+                    b.Foreground = color1;
+
+                }
+                
+                else
+                {
+                    player1Turn = !player1Turn;
+                }
+
+                // if 1 player game
+                // and player1turn
+                // do ai
+
+                if (CheckForWinner() == 1)
+                {
+                    Player1Wins.Visibility = Visibility.Visible;
+                    xTurn.Visibility = Visibility.Hidden;
+                    oTurn.Visibility = Visibility.Hidden;
+                }
+                else if (CheckForWinner() == 2)
+                {
+                    Player2Wins.Visibility = Visibility.Visible;
+                    xTurn.Visibility = Visibility.Hidden;
+                    oTurn.Visibility = Visibility.Hidden;
+                }
+                if (CheckForWinner() != 0)
+                {
+                    gameOver = true;
+                }
+
+
+
+
+
 
             }
         }
-
+        public static Button GetButton(Grid g, int col, int row)
+        {
+            Button b = g.Children.OfType<Button>()
+                .Cast<Button>()
+                .First(e => Grid.GetRow(e) == row && Grid.GetColumn(e) == col);
+            return b;
+        }
         private int CheckForWinner()
         {
             // Check rows
@@ -160,5 +224,6 @@ namespace TicTacToe
         {
             NewGame();
         }
+        
     }
 }

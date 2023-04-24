@@ -7,9 +7,17 @@
         mc:Ignorable="d"
         Title="Window1" Height="450" Width="800">
     <Grid x:Name="PlayerPicker" Visibility="Visible">
-        <TextBox Margin="160,114,160,245" TextWrapping="Wrap" Text="1 Player or 2 Player? With one player you can play against the computer." FontSize="18"/>
-        <Button x:Name="onePlayer" Content="1 Player" HorizontalAlignment="Left" Margin="160,189,0,0" VerticalAlignment="Top" Height="60" Width="225" Click="onePlayer_Click"/>
-        <Button x:Name="twoPlayer" Content="2 Player" HorizontalAlignment="Left" Margin="415,189,0,0" VerticalAlignment="Top" Height="60" Width="225" Click="twoPlayer_Click"/>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+        <TextBox TextWrapping="Wrap" Text="1 Player or 2 Player? With one player you can play against the computer." FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" Width="513" Grid.ColumnSpan="4"  Grid.Column="0"/>
+        <Button x:Name="onePlayer" Content="1 Player" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="224" Click="onePlayer_Click" FontSize="24" Grid.ColumnSpan="1"  Grid.Column="1" Margin="0,130,0,0" />
+        <Button x:Name="twoPlayer" Content="2 Player" VerticalAlignment="Center" Height="60" Width="226" Click="twoPlayer_Click" FontSize="24" HorizontalAlignment="Center" Grid.Column="2" Grid.ColumnSpan="1" Margin="0,130,0,0" />
 
     </Grid>
 </Window>

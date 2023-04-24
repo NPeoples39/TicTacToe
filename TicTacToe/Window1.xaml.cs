@@ -19,8 +19,8 @@ namespace TicTacToe
     /// </summary>
     public partial class Window1 : Window
     {
-        private Window _parentWindow;
-        public Window1(Window parentWindow )
+        private MainWindow _parentWindow;
+        public Window1(MainWindow parentWindow )
         {
             _parentWindow = parentWindow;
             InitializeComponent();
@@ -33,7 +33,10 @@ namespace TicTacToe
 
         private void onePlayer_Click(object sender, RoutedEventArgs e)
         {
-           
+            _parentWindow.Show();
+            this.Hide();
+            _parentWindow.PlayerNum = 1;
+            _parentWindow.NewGame();
         }
 
         private void twoPlayer_Click(object sender, RoutedEventArgs e)
@@ -41,5 +44,7 @@ namespace TicTacToe
             _parentWindow.Show();
             this.Hide();
         }
+        
     }
+    
 }

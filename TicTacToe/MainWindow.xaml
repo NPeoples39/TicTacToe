@@ -5,19 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TicTacToe"
         mc:Ignorable="d"
-        Title="MainWindow" Height="380" Width="350">
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontSize" Value="24"/>
+        </Style>
+        <Style TargetType="{x:Type Grid}">
+            <Setter Property="Background" Value="Black">
+            
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid x:Name="MainGrid">
+
         <Grid.RowDefinitions>
+
             <RowDefinition Height="3*"/>
             <RowDefinition Height="3*"/>
             <RowDefinition Height="3*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
+
+        
+
+
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        
         <Button x:Name="button00" Grid.Row="0" Grid.Column="0" Click="Button_Click">
 
         </Button>
@@ -31,14 +50,12 @@
         <Button x:Name="button20" Content="" Grid.Row="2" Grid.Column="0" Click="Button_Click"/>
         <Button x:Name="button21" Content="" Grid.Row="2" Grid.Column="1" Click="Button_Click"/>
         <Button x:Name="button22" Content="" Grid.Row="2" Grid.Column="2" Click="Button_Click"/>
-        <Button HorizontalAlignment="Center" Grid.Row="4" Content="New Game" VerticalAlignment="Center" Grid.ColumnSpan="3" Height="37" Width="350" Click="Button_Click_1">
-            
-
-        </Button>
-        <TextBox x:Name="oTurn" TextWrapping="Wrap" Text="O's Turn" Grid.Column="2" Margin="29,3,28,3" Grid.Row="3" Visibility="Hidden"/>
-        <TextBox x:Name="xTurn" TextWrapping="Wrap" Text="X's Turn" Margin="28,3,29,3" Grid.Row="3" Visibility="Hidden"/>
-        <TextBox x:Name="Player1Wins" TextWrapping="Wrap" Text="X Wins" Grid.Column="1" Margin="19,5,19,74" Visibility="Hidden" Height="30"/>
-        <TextBox x:Name="Player2Wins" TextWrapping="Wrap" Text="O Wins" Height="30" Grid.Column="1" Margin="19,5,19,74" Visibility="Hidden"/>
+        <Button Grid.Row="4" Content="New Game" Grid.ColumnSpan="3" Click="Button_Click_1" FontSize="24" Margin="0"/>
+        <TextBox x:Name="oTurn" TextWrapping="Wrap" Text="O's Turn" Grid.Column="2" Grid.Row="3" Visibility="Hidden" FontSize="18" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+        <TextBox x:Name="xTurn" TextWrapping="Wrap" Text="X's Turn" Grid.Row="3" Visibility="Hidden" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBox x:Name="Player1Wins" TextWrapping="Wrap" Text="X Wins" Grid.Column="1" Visibility="Hidden" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <TextBox x:Name="Player2Wins" TextWrapping="Wrap" Text="O Wins" Grid.Column="1" Visibility="Hidden" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        
     </Grid>
 
 </Window>
