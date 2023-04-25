@@ -9,7 +9,7 @@
     <Window.Resources>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Margin" Value="5"/>
-            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontSize" Value="32"/>
         </Style>
         <Style TargetType="{x:Type Grid}">
             <Setter Property="Background" Value="Black">
@@ -50,7 +50,7 @@
         <Button x:Name="button20" Content="" Grid.Row="2" Grid.Column="0" Click="Button_Click"/>
         <Button x:Name="button21" Content="" Grid.Row="2" Grid.Column="1" Click="Button_Click"/>
         <Button x:Name="button22" Content="" Grid.Row="2" Grid.Column="2" Click="Button_Click"/>
-        <Button Grid.Row="4" Content="New Game" Grid.ColumnSpan="3" Click="Button_Click_1" FontSize="24" Margin="0"/>
+        <Button Grid.Row="4" Content="New Game" Grid.ColumnSpan="3" Click="Button_Click_1" FontSize="32" Margin="0" FontWeight="Bold"/>
         <TextBox x:Name="oTurn" TextWrapping="Wrap" Text="O's Turn" Grid.Column="2" Grid.Row="3" Visibility="Hidden" FontSize="18" HorizontalAlignment="Right" VerticalAlignment="Top"/>
         <TextBox x:Name="xTurn" TextWrapping="Wrap" Text="X's Turn" Grid.Row="3" Visibility="Hidden" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <TextBox x:Name="Player1Wins" TextWrapping="Wrap" Text="X Wins" Grid.Column="1" Visibility="Hidden" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Top"/>

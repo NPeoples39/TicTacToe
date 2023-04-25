@@ -31,6 +31,7 @@ namespace TicTacToe
         public int PlayerNum { get; set; }
 
         Random random = new Random();
+        System.Media.SoundPlayer sound = new System.Media.SoundPlayer();
         public MainWindow()
         {
             InitializeComponent();
@@ -92,6 +93,7 @@ namespace TicTacToe
                     board[row, column] = 1;
                     oTurn.Visibility = Visibility.Visible;
                     xTurn.Visibility = Visibility.Hidden;
+
 
                 }
                 else
