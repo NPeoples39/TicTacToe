@@ -55,7 +55,8 @@
         <TextBox x:Name="xTurn" TextWrapping="Wrap" Text="X's Turn" Grid.Row="3" Visibility="Hidden" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <TextBox x:Name="Player1Wins" TextWrapping="Wrap" Text="X Wins" Grid.Column="1" Visibility="Hidden" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <TextBox x:Name="Player2Wins" TextWrapping="Wrap" Text="O Wins" Grid.Column="1" Visibility="Hidden" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        
+        <TextBox x:Name="Tie" TextWrapping="Wrap" Text="Tie Game" Grid.Column="1" Visibility="Hidden" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
     </Grid>
 
 </Window>

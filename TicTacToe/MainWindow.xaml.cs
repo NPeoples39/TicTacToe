@@ -31,15 +31,17 @@ namespace TicTacToe
         public int PlayerNum { get; set; }
 
         Random random = new Random();
-        System.Media.SoundPlayer sound = new System.Media.SoundPlayer();
+        
         public MainWindow()
         {
             InitializeComponent();
+            
             NewGame();
             Window1 w = new Window1(this);
             //MainWindow w2 = new MainWindow();
             w.Show();
             this.Hide();
+            
         }
 
         /// <summary>
@@ -61,10 +63,10 @@ namespace TicTacToe
             /// The player 1 wins/ player 2 wins buttons hide themselves
             /// The x turn is visible and the o turn is hidden
             /// </summary>
-            Player1Wins.Visibility = Visibility.Hidden;
-            Player2Wins.Visibility = Visibility.Hidden;
+            HideWinners();
             xTurn.Visibility = Visibility.Visible;
             oTurn.Visibility = Visibility.Hidden;
+            
             board = new int[3, 3];
             player1Turn = true;
         }
@@ -86,13 +88,18 @@ namespace TicTacToe
             //MessageBox.Show($"{row}{column}/n{board[row, column]}");
             if (board[row, column] == 0)
             {
+                Audio.Move.Play();
                 if (player1Turn)
                 {
+
                     button.Content = "X";
                     button.Foreground = color2;
                     board[row, column] = 1;
                     oTurn.Visibility = Visibility.Visible;
                     xTurn.Visibility = Visibility.Hidden;
+                    
+                    
+                    
 
 
                 }
@@ -103,6 +110,8 @@ namespace TicTacToe
                     board[row, column] = 2;
                     oTurn.Visibility= Visibility.Hidden;
                     xTurn.Visibility = Visibility.Visible;
+
+                    
                 }
                 
                 /// <summary>
@@ -110,39 +119,43 @@ namespace TicTacToe
                 /// </summary>
                 if (CheckForWinner() == 1)
                 {
-                    Player1Wins.Visibility = Visibility.Visible;
-                    xTurn.Visibility = Visibility.Hidden;
-                    oTurn.Visibility = Visibility.Hidden;
+                    ShowWinner(Player1Wins);
+                   
                 }
                 else if(CheckForWinner() == 2)
                 {
-                    Player2Wins.Visibility = Visibility.Visible;
-                    xTurn.Visibility = Visibility.Hidden;
-                    oTurn.Visibility = Visibility.Hidden;   
+                    ShowWinner(Player2Wins);
+                      
                 }
                 if(CheckForWinner() != 0)
                 {
                     gameOver = true;
                 }
+                if(CheckForWinner() == -1)
+                {
+                    ShowWinner(Tie);
+                    
+                }
 
 
-                
-                if (PlayerNum == 1 && player1Turn == true)
+
+
+                if (PlayerNum == 1 && player1Turn == true && gameOver == false)
                 {
                     
 
                     int rx = random.Next(0, 3);
                     int ry = random.Next(0, 3);
 
-                    while (board[rx, ry] != 0)
+                    while (board[ry, rx] != 0)
                     {
                         rx = random.Next(0, 3);
                         ry = random.Next(0, 3);
                     }
-                    //MessageBox.Show($"{rx}{ry}");
+                    //MessageBox.Show($"{ry}{rx}");
                     Button b = GetButton(MainGrid, rx, ry);
                     b.Content = "O";
-                    board[rx, ry] = 2;
+                    board[ry, rx] = 2;
                     b.Foreground = color1;
 
                 }
@@ -189,6 +202,7 @@ namespace TicTacToe
         }
         private int CheckForWinner()
         {
+           
             // Check rows
             for (int i = 0; i < 3; i++)
             {
@@ -217,7 +231,23 @@ namespace TicTacToe
             {
                 return board[2, 0];
             }
-            
+            int plays = 0;
+            for (int row = 0; row < 3; row++)
+            {
+                for (int col = 0; col < 3; col++)
+                {
+                    if (board[row, col] != 0)
+                    {
+                        plays++;
+                    }
+
+                }
+            }
+            if (plays == 9)
+            {
+                return -1;
+            }
+
             return 0;
 
         }
@@ -226,6 +256,19 @@ namespace TicTacToe
         {
             NewGame();
         }
-        
+
+        private void HideWinners()
+        {
+            Player1Wins.Visibility = Visibility.Hidden;
+            Player2Wins.Visibility = Visibility.Hidden;
+            Tie.Visibility = Visibility.Hidden;
+        }
+        private void ShowWinner(TextBox w)
+        {
+            HideWinners();
+            w.Visibility = Visibility.Visible;
+            xTurn.Visibility = Visibility.Hidden;
+            oTurn.Visibility = Visibility.Hidden;
+        }
     }
 }
